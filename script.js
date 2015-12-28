@@ -45,6 +45,8 @@ function setPhoto(photoSizes, index){
 		if (photoSizes.sizes.size[i].height >= wantedSize) {
 			document.getElementById('fv-photo-' + index).innerHTML += '<img src="' + photoSizes.sizes.size[i].source + '"/>';
 			return;
+		}else if(i == photoSizes.sizes.size.length - 1){
+			document.getElementById('fv-photo-' + index).innerHTML += '<img src="' + photoSizes.sizes.size[i].source + '"/>';
 		}
 	}
 }
