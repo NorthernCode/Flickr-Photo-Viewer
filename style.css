@@ -1,0 +1,34 @@
+body{
+	background-color: #000;
+	color: #eee;
+}
+
+#f-viewer{
+	background-color: #050505;
+	overflow: hidden;
+	width: 1600px;
+	height: 100%;
+	perspective: 1600px;
+	text-align: center;
+}
+
+.fv-image{
+	position: absolute;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0;
+	right: 0;
+}
+
+.fv-image.left{
+	transform: rotateY(70deg);
+	z-index: 1000 !important;
+}
+
+.fv-image.center{
+	z-index: 1001 !important;
+}
+
+.fv-image.right{
+	transform: rotateY(-70deg);
+}
