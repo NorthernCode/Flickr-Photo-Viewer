@@ -27,7 +27,7 @@ function getPhotoUrls(data){
 	for (var i = 0; i < data.photoset.photo.length; i++){
 		(function (i){
 			//element.innerHTML += '<div id="fv-photo-' + i + '" class="fv-image"><p>' + data.photoset.photo[i].title+ '</p></div>';
-			element.innerHTML += '<div id="fv-photo-' + i + '" class="fv-image"></div>';
+			element.innerHTML += '<div id="fv-photo-' + i + '" class="fv-image right"></div>';
 			var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&format=json&nojsoncallback=1&api_key=81bcafb1419ee85e54f9c29392eb356b&photo_id=' + data.photoset.photo[i].id; 
 			xhttp[i] = new XMLHttpRequest();
 			xhttp[i].onreadystatechange = function() {
@@ -39,18 +39,14 @@ function getPhotoUrls(data){
 			xhttp[i].send();
 		})(i);
 	}
-	document.getElementById('fv-photo-0').setAttribute("class", "fv-image left");
-	document.getElementById('fv-photo-1').setAttribute("class", "fv-image left");
-	document.getElementById('fv-photo-2').setAttribute("class", "fv-image center");
-	document.getElementById('fv-photo-3').setAttribute("class", "fv-image right");
-	document.getElementById('fv-photo-4').setAttribute("class", "fv-image right");
+	document.getElementById('fv-photo-0').setAttribute("class", "fv-image center"); // first image pointing towards viewer
 }
 
 function setPhoto(photoSizes, index){
 	for (var i = 0; i < photoSizes.sizes.size.length; i++){
 		if (photoSizes.sizes.size[i].height >= wantedSize) {
 			document.getElementById('fv-photo-' + index).innerHTML += '<img src="' + photoSizes.sizes.size[i].source + '"/>';
-			document.getElementById('fv-photo-' + index).style.left = -1000 + index * 500 + 'px';
+			document.getElementById('fv-photo-' + index).style.left = index * 300 + 'px';
 			document.getElementById('fv-photo-' + index).style.zIndex = 999 - index;
 			return;
 		}else if(i == photoSizes.sizes.size.length - 1){
