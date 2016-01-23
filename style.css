@@ -8,10 +8,11 @@ body{
 	overflow: hidden;
 	width: 1600px;
 	height: 100%;
-	perspective: 1600px;
+	perspective: 1600px; /*required for CSS 3d (rotateY to show correctly)*/
 	text-align: center;
 }
 
+/*align images to center*/
 .fv-image{
 	position: absolute;
 	margin-right: auto;
@@ -20,6 +21,7 @@ body{
 	right: 0;
 }
 
+/*classes to orient images compared to viewer*/
 .fv-image.left{
 	transform: rotateY(70deg);
 	z-index: 1000 !important;

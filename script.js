@@ -2,6 +2,7 @@ var element;
 var wantedSize = 640;
 var photos = [];
 var photoOut = 0;
+var apiUrl = 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&api_key=81bcafb1419ee85e54f9c29392eb356b&method='; 
 window.addEventListener('load', fvInit, false );
 
 function fvInit(){
@@ -11,7 +12,7 @@ function fvInit(){
 }
 
 function getPhotoIDs(albumId){
-	var url = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&format=json&nojsoncallback=1&api_key=81bcafb1419ee85e54f9c29392eb356b&photoset_id=' + albumId; 
+	var url = apiUrl + 'flickr.photosets.getPhotos&photoset_id=' + albumId; 
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -28,7 +29,7 @@ function getPhotoUrls(data){
 		(function (i){
 			//element.innerHTML += '<div id="fv-photo-' + i + '" class="fv-image"><p>' + data.photoset.photo[i].title+ '</p></div>';
 			element.innerHTML += '<div id="fv-photo-' + i + '" class="fv-image right"></div>';
-			var url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&format=json&nojsoncallback=1&api_key=81bcafb1419ee85e54f9c29392eb356b&photo_id=' + data.photoset.photo[i].id; 
+			var url = apiUrl + 'flickr.photos.getSizes&photo_id=' + data.photoset.photo[i].id; 
 			xhttp[i] = new XMLHttpRequest();
 			xhttp[i].onreadystatechange = function() {
 			    if (xhttp[i].readyState == 4 && xhttp[i].status == 200) {
