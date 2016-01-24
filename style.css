@@ -29,7 +29,6 @@ body{
 	position: absolute;
 	margin-right: auto;
 	margin-left: auto;
-	left: 0;
 	right: 0;
 	transition: left 1s, transform 1s, z-index 1s;
 }
