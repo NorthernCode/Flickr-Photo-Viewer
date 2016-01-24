@@ -6,10 +6,22 @@ body{
 #f-viewer{
 	background-color: #050505;
 	overflow: hidden;
-	width: 1600px;
+	width: 100%;
 	height: 100%;
-	perspective: 1600px; /*required for CSS 3d (rotateY to show correctly)*/
+	perspective: 100vw; /*required for CSS 3d (rotateY to show correctly)*/
 	text-align: center;
+}
+
+/*buttons*/
+#nextBtn{
+	position: absolute;
+	right: 0;
+	top: 95%;
+}
+#prevBtn{
+	position: absolute;
+	left: 0;
+	top: 95%;
 }
 
 /*align images to center*/
@@ -19,6 +31,7 @@ body{
 	margin-left: auto;
 	left: 0;
 	right: 0;
+	transition: left 1s, transform 1s, z-index 1s;
 }
 
 /*classes to orient images compared to viewer*/
