@@ -4,6 +4,7 @@ var photos = 0;
 var currentPhoto = 0;
 var apiUrl = 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&api_key=81bcafb1419ee85e54f9c29392eb356b&method='; //API url with json setting and api key
 window.addEventListener('load', fvInit, false ); //trigger initialization when DOM loaded
+document.onkeydown = keyEvent;
 
 function fvInit(){
 	element = document.getElementById('f-viewer'); //get our container element
@@ -81,4 +82,9 @@ function changeImage(value){
 		}
 	}
 
+}
+
+function keyEvent(event){
+	if(event.keyCode == 37) changeImage(-1);
+	else if(event.keyCode == 39) changeImage(1);
 }
