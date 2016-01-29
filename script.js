@@ -54,7 +54,7 @@ function setPhoto(photoSizes, index){
 	for (var i = 0; i < photoSizes.sizes.size.length; i++){ //loop thru all image sizes
 
 		if (photoSizes.sizes.size[i].height >= wantedSize) { //check if the size is what we wanted
-			document.getElementById('fv-photo-' + index).innerHTML += '<img src="' + photoSizes.sizes.size[i].source + '"/>'; //create DOM img element
+			document.getElementById('fv-photo-' + index).innerHTML += '<div class="imageBg"><img src="' + photoSizes.sizes.size[i].source + '"/></div>'; //create DOM img element
 			return;
 
 		}else if(i == photoSizes.sizes.size.length - 1){ //if we did not find the size we want
