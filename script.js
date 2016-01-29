@@ -9,8 +9,8 @@ document.onkeydown = keyEvent;
 function fvInit(){
 	element = document.getElementById('f-viewer'); //get our container element
 	element.innerHTML += 'Album with ID: ' + element.getAttribute('data-photoset') +'</br>';
-	element.innerHTML += '<button id="nextBtn" onClick="changeImage(1)">NEXT</button>';
-	element.innerHTML += '<button id="prevBtn" onClick="changeImage(-1)">PREV</button>';
+	element.innerHTML += '<button id="nextBtn" class="arrowBtn" onClick="changeImage(1)"></button>';
+	element.innerHTML += '<button id="prevBtn" class="arrowBtn" onClick="changeImage(-1)"></button>';
 	getPhotoIDs(element.getAttribute('data-photoset')); //get settings and call for photos
 }
 

@@ -13,21 +13,37 @@ body{
 }
 
 /*buttons*/
-button {
+.arrowBtn {
 	z-index: 1100;
 	border-radius: 50%;
 	height: 60px;
 	width: 60px;
+	-webkit-mask-image: url('arrow.svg');
+    mask-image: url('arrow.svg');
+	border: none;
+	cursor: pointer;
+	opacity: 0.6;
+	transition: opacity 0.2s
 }
+
+.arrowBtn:hover{
+	opacity: 1;
+	transition: opacity 0.2s
+}
+
 #nextBtn{
 	position: absolute;
-	right: 0;
+	right: 10px;
 	bottom: 10px;
+	background-color: #FF0589;
 }
+
 #prevBtn{
 	position: absolute;
-	left: 0;
+	left: 10px;
 	bottom: 10px;
+	transform: rotateZ(180deg);
+	background-color: #0065DF;
 }
 
 /*align images to center*/
