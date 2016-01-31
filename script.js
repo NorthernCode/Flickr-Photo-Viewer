@@ -1,5 +1,5 @@
 var element; //DOM element containing everything
-var wantedSize = 640; //what version of image at Flickr are we using
+var wantedSize = 640; //what version of image at Flickr are we using (size in px)
 var photos = 0;
 var currentPhoto = 0;
 var apiUrl = 'https://api.flickr.com/services/rest/?format=json&nojsoncallback=1&api_key=81bcafb1419ee85e54f9c29392eb356b&method='; //API url with json setting and api key
@@ -8,7 +8,7 @@ document.onkeydown = keyEvent;
 
 function fvInit(){
 	element = document.getElementById('f-viewer'); //get our container element
-	element.innerHTML += 'Album with ID: ' + element.getAttribute('data-photoset') +'</br>';
+	element.innerHTML += '<div id="albumId"> Album with ID: ' + element.getAttribute('data-photoset') +'</div>';
 	element.innerHTML += '<button id="nextBtn" class="arrowBtn" onClick="changeImage(1)"></button>';
 	element.innerHTML += '<button id="prevBtn" class="arrowBtn" onClick="changeImage(-1)"></button>';
 	getPhotoIDs(element.getAttribute('data-photoset')); //get settings and call for photos
@@ -54,7 +54,7 @@ function setPhoto(photoSizes, index){
 	for (var i = 0; i < photoSizes.sizes.size.length; i++){ //loop thru all image sizes
 
 		if (photoSizes.sizes.size[i].height >= wantedSize) { //check if the size is what we wanted
-			document.getElementById('fv-photo-' + index).innerHTML += '<div class="imageBg"><img src="' + photoSizes.sizes.size[i].source + '"/></div>'; //create DOM img element
+			document.getElementById('fv-photo-' + index).innerHTML += '<img src="' + photoSizes.sizes.size[i].source + '"/>'; //create DOM img element
 			return;
 
 		}else if(i == photoSizes.sizes.size.length - 1){ //if we did not find the size we want
@@ -65,17 +65,17 @@ function setPhoto(photoSizes, index){
 }
 
 function changeImage(value){
-	currentPhoto = Math.max(0, currentPhoto + value);
+	currentPhoto = Math.min(Math.max(0, currentPhoto + value), photos - 1);
 
 	for (var n = 0; n < photos; n++){
 		var nthElement = document.getElementById('fv-photo-' + n);
 		nthElement.style.zIndex = 999 - (n - currentPhoto); //set arrage
 		if(n < currentPhoto){
 			nthElement.setAttribute("class", "fv-image left");
-			nthElement.style.left = -500 + (n - currentPhoto) * 150 + 'px'; //set style position
+			nthElement.style.left = -27 + (n - currentPhoto) * 10 + 'vw'; //set style position
 		}else if(n > currentPhoto){
 			nthElement.setAttribute("class", "fv-image right");
-			nthElement.style.left = 500 + (n - currentPhoto) * 150 + 'px'; //set style position
+			nthElement.style.left = 27 + (n - currentPhoto) * 10 + 'vw'; //set style position
 		}else{
 			nthElement.setAttribute("class", "fv-image center");
 			nthElement.style.left = 0 + 'px'; //set style position

@@ -11,6 +11,11 @@ body{
 	text-align: center;
 }
 
+#albumId{
+	position: relative;
+	top: 96%;
+}
+
 /*buttons*/
 .arrowBtn {
 	z-index: 1100;
@@ -48,11 +53,14 @@ body{
 /*align images to center*/
 .fv-image{
 	position: absolute;
+	top: 10vh;
 	right: 0;
 	transition: left 1s, transform 1s, z-index 1s;
 }
 
 .fv-image img{
+	max-width: 60vw;
+	max-height: 70vh;
 	-webkit-filter: brightness(20%) blur(5px);
 	filter: brightness(20%) blur(5px);
 	transition: -webkit-filter 1s, filter 1s;
